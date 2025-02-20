@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { type FieldErrors } from 'react-hook-form';
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
 
 export const useFormErrorToast = (errors: FieldErrors) => {
   useEffect(() => {
