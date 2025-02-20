@@ -1,5 +1,5 @@
 import { type PropsWithChildren } from 'react';
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'sonner';
 
 export const Initializer = ({ children }: PropsWithChildren) => {
   return (
