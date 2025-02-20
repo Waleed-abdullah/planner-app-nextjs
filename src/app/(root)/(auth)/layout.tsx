@@ -1,10 +1,8 @@
-import './globals.css';
-
-import RootLayout from '@/layouts/root-layout';
+import { AuthLayout } from '@/layouts/auth-layout';
 import { type PropsWithChildren } from '@/types/common';
 
 const Layout = ({ children }: PropsWithChildren) => {
-  return <RootLayout>{children}</RootLayout>;
+  return <AuthLayout>{children}</AuthLayout>;
 };
 
 export default Layout;
