@@ -62,3 +62,15 @@ export const useSignUp = () =>
       onSuccessHandler('Signed up successfully');
     },
   });
+
+export const signOutUser = async () => {
+  const response = await fetch(API_ROUTES.SIGN_OUT, {
+    method: 'POST',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to sign out');
+  }
+
+  return response.json();
+};

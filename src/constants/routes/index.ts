@@ -22,4 +22,5 @@ const AUTH_API_BASE = `${API_BASE_URL}/auth`;
 export const API_ROUTES = {
   SIGN_IN: `${AUTH_API_BASE}/signin`,
   SIGN_UP: `${AUTH_API_BASE}/signup`,
+  SIGN_OUT: `${AUTH_API_BASE}/signout`,
 };
