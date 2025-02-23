@@ -1,11 +1,20 @@
 'use client';
 
+import { type User } from '@supabase/supabase-js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
 
+import { UserStoreProvider } from '@/stores/user-store';
 import { type PropsWithChildren } from '@/types/common';
 
-export const RootLayoutProvider = ({ children }: PropsWithChildren) => {
+interface RootLayoutProviderProps extends PropsWithChildren {
+  user: User | null;
+}
+
+export const RootLayoutProvider = ({
+  children,
+  user,
+}: RootLayoutProviderProps) => {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -19,6 +28,8 @@ export const RootLayoutProvider = ({ children }: PropsWithChildren) => {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <UserStoreProvider initialState={{ user }}>{children}</UserStoreProvider>
+    </QueryClientProvider>
   );
 };
