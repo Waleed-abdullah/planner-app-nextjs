@@ -3,8 +3,6 @@
 import { createContext, type ReactNode, useContext, useState } from 'react';
 import { create } from 'zustand';
 
-import { signOutUser } from '@/utils/auth';
-
 import type { UserAction, UserState } from './user-store.types';
 
 const createStore = (initialState: UserState) =>
@@ -17,7 +15,6 @@ const createStore = (initialState: UserState) =>
     },
 
     logoutUser: () => {
-      signOutUser();
       set(() => ({ user: null }));
     },
   }));

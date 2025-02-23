@@ -1,16 +1,9 @@
-'use client';
-
-import { Button } from '@/components/ui/button';
-import { useLogout } from '@/hooks/use-logout';
-import { useUserStoreContext } from '@/stores/user-store';
+import { CustomCalendar } from './custom-calendar';
 
 export const Dashboard = () => {
-  const { user } = useUserStoreContext()((state) => state);
-  const handleLogout = useLogout();
   return (
-    <div className="flex h-dvh flex-col items-center justify-center">
-      <span className="">email {user?.email}</span>
-      <Button onClick={handleLogout}>Logout</Button>
+    <div className="size-full overflow-auto p-8">
+      <CustomCalendar />
     </div>
   );
 };
