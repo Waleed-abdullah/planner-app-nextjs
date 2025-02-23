@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { type PropsWithChildren } from '@/types/common';
 
 import { Initializer } from './initializer';
+import { RootLayoutProvider } from './provider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,9 +13,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className="h-[2000px]">
-        {children}
-        <Initializer />
+      <body>
+        <RootLayoutProvider>
+          {children}
+          <Initializer />
+        </RootLayoutProvider>
       </body>
     </html>
   );
