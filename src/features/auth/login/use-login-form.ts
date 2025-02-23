@@ -3,6 +3,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form';
 
 import { useFormErrorToast } from '@/hooks/use-form-error-toast';
 import { AuthSchema, type AuthSchemaType } from '@/schemas/auth';
+import { useLogIn } from '@/utils/auth';
 
 export const useLoginForm = () => {
   const formHook = useForm<AuthSchemaType>({
@@ -12,11 +13,12 @@ export const useLoginForm = () => {
       password: '',
     },
   });
+  const { mutateAsync } = useLogIn();
 
   useFormErrorToast(formHook.formState.errors);
 
-  const onSubmit: SubmitHandler<AuthSchemaType> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<AuthSchemaType> = async (values) => {
+    await mutateAsync(values);
   };
 
   return {

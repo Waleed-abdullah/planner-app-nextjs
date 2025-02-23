@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { type SubmitHandler, type UseFormReturn } from 'react-hook-form';
 
+import { Spinner } from '@/components/spinner';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -63,8 +64,16 @@ export const AuthForm = ({ formHook, onSubmit, variant }: AuthFormProps) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full capitalize">
-              {variant}
+            <Button
+              type="submit"
+              disabled={formHook.formState.isSubmitting}
+              className="w-full capitalize"
+            >
+              {!formHook.formState.isSubmitting ? (
+                variant
+              ) : (
+                <Spinner className="text-white" />
+              )}
             </Button>
           </div>
         </div>
