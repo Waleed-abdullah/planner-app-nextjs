@@ -36,13 +36,16 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  console.log({ user, pathname: request.nextUrl.pathname });
   if (!user && !UNPROTECTED_ROUTES.has(request.nextUrl.pathname)) {
+    console.log('Hi');
     const url = request.nextUrl.clone();
     url.pathname = ABSOLUTE_ROUTES.ROOT;
     return NextResponse.redirect(url);
   } else if (
-    (user && request.nextUrl.pathname === ABSOLUTE_ROUTES.ROOT) ||
-    request.nextUrl.pathname === ABSOLUTE_ROUTES.SIGN_UP
+    user &&
+    (request.nextUrl.pathname === ABSOLUTE_ROUTES.ROOT ||
+      request.nextUrl.pathname === ABSOLUTE_ROUTES.SIGN_UP)
   ) {
     const url = request.nextUrl.clone();
     url.pathname = ABSOLUTE_ROUTES.DASHBOARD;
