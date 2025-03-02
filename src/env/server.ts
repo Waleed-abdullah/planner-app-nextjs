@@ -5,6 +5,7 @@ export const serverEnv = createEnv({
   server: {
     SUPABASE_URL: z.string(),
     SUPABASE_ANON_KEY: z.string(),
+    DATABASE_URL: z.string(),
   },
   experimental__runtimeEnv: process.env,
 });
