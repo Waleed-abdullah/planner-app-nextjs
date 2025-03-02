@@ -4,6 +4,7 @@ import { type User } from '@supabase/supabase-js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
 
+import { TooltipProvider } from '@/components/ui/tooltip';
 import { UserStoreProvider } from '@/stores/user-store';
 import { type PropsWithChildren } from '@/types/common';
 
@@ -29,7 +30,9 @@ export const RootLayoutProvider = ({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <UserStoreProvider initialState={{ user }}>{children}</UserStoreProvider>
+      <UserStoreProvider initialState={{ user }}>
+        <TooltipProvider>{children}</TooltipProvider>
+      </UserStoreProvider>
     </QueryClientProvider>
   );
 };

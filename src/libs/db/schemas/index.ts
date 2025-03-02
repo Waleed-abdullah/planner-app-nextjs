@@ -22,9 +22,10 @@ export const events = pgTable('events', {
   id: uuid('id').defaultRandom().primaryKey(),
   title: text('title').notNull(),
   description: text('description'),
+  country: text('country'),
   location: text('location'),
   start_date: timestamp('start_date').notNull(),
-  end_date: timestamp('end_date'),
+  end_date: timestamp('end_date').notNull(),
   is_all_day: boolean('is_all_day').default(false),
   user_id: uuid('user_id')
     .notNull()
