@@ -9,7 +9,7 @@ export const useFormErrorToast = (errors: FieldErrors) => {
       keys.forEach((key) => {
         const error = errors[key];
         if (error?.message && typeof error.message === 'string') {
-          toast.error(error.message);
+          toast.error(`For field ${key}: ${error.message}`);
         }
       });
     }

@@ -13,7 +13,8 @@ const localizer = dayjsLocalizer(dayjs);
 const DnDCalendar = withDragAndDrop(Calendar);
 
 export const CustomCalendar = () => {
-  const { date, view, onView, onNavigate } = useCustomCalendar();
+  const { date, view, onView, onNavigate, events, handleUpdateEvent } =
+    useCustomCalendar();
   return (
     <DnDCalendar
       localizer={localizer}
@@ -23,9 +24,11 @@ export const CustomCalendar = () => {
       onView={onView}
       view={view}
       showMultiDayTimes
-      onSelectSlot={(slotInfo) => console.log(slotInfo)}
       onNavigate={onNavigate}
       date={date}
+      events={events}
+      onEventResize={handleUpdateEvent}
+      onEventDrop={handleUpdateEvent}
     />
   );
 };
