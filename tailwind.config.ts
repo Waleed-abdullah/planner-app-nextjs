@@ -5,6 +5,12 @@ const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      borderColor: {
+        primary: 'var(--border-primary)',
+      },
+      textColor: {
+        'new-york-primary-1': 'var(--text-new-york-primary-1)',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -51,6 +57,10 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        bodoni: ['var(--font-bodoni)', 'serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
       },
     },
   },

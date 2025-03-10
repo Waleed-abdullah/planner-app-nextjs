@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { createClient } from '@/libs/supabase/server';
 import { type PropsWithChildren } from '@/types/common';
 
+import { bodoniModa, inter } from './fonts';
 import { Initializer } from './initializer';
 import { RootLayoutProvider } from './provider';
 
@@ -17,8 +18,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const { data } = await supabase.auth.getUser();
 
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${bodoniModa.variable} ${inter.variable}`}>
+      <body className={inter.className}>
         <RootLayoutProvider user={data.user}>
           {children}
           <Initializer />

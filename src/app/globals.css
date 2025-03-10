@@ -36,6 +36,12 @@ body {
 
     /* navbar */
     --navbar-height: 3.5rem;
+
+    /* text colors */
+    --text-new-york-primary-1: #809ea5;
+
+    /* border-color */
+    --border-primary: #aed4dc;
   }
   .dark {
     --background: 0 0% 3.9%;

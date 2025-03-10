@@ -1,7 +1,9 @@
 import { getUserEvents } from '@/services/events';
 import { type PropsWithChildren } from '@/types/common';
 
+import { CategoriesLegend } from './categories-legend';
 import { DashboardProviders } from './dashboard-providers';
+import { InfoHeader } from './info-header';
 import { Navbar } from './navbar';
 
 export const DashboardLayout = async ({ children }: PropsWithChildren) => {
@@ -10,11 +12,15 @@ export const DashboardLayout = async ({ children }: PropsWithChildren) => {
   return (
     <div className="min-h-svh w-full bg-gray-100">
       <Navbar />
-      <div className="h-[calc(100dvh-var(--navbar-height))] w-full">
+      <div className="size-full">
+        <InfoHeader />
         <DashboardProviders userEvents={eventData}>
           {children}
         </DashboardProviders>
       </div>
+      <footer>
+        <CategoriesLegend />
+      </footer>
     </div>
   );
 };
