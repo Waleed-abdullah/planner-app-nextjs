@@ -1,3 +1,5 @@
+'use client';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -8,9 +10,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useLogout } from '@/hooks/use-logout';
+import { useUserStoreContext } from '@/stores/user-store';
 
 export const UserMenu = () => {
   const logout = useLogout();
+  const user = useUserStoreContext()((state) => state.user);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -20,7 +24,7 @@ export const UserMenu = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>{user?.email}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
       </DropdownMenuContent>
