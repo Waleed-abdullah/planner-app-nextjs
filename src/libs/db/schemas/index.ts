@@ -24,6 +24,7 @@ export const events = pgTable('events', {
   description: text('description'),
   country: text('country'),
   location: text('location'),
+  category: text('category'),
   start_date: timestamp('start_date').notNull(),
   end_date: timestamp('end_date').notNull(),
   is_all_day: boolean('is_all_day').default(false),
