@@ -10,9 +10,9 @@ export const DashboardLayout = async ({ children }: PropsWithChildren) => {
   const { eventData } = await getUserEvents();
 
   return (
-    <div className="min-h-svh w-full bg-gray-100">
+    <div className="relative flex min-h-svh w-full flex-col bg-gray-100">
       <Navbar />
-      <div className="size-full">
+      <div className="flex h-[calc(100dvh-var(--navbar-height))] flex-col">
         <InfoHeader />
         <DashboardProviders userEvents={eventData}>
           {children}

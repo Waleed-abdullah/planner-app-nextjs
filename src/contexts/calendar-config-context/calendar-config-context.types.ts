@@ -1,3 +1,4 @@
+import { type Dayjs } from 'dayjs';
 import {
   type Dispatch,
   type PropsWithChildren,
@@ -11,6 +12,9 @@ export interface ICalendarConfigContext {
   setCurrentCountry: Dispatch<SetStateAction<string | null>>;
   userEvents: EventSelectType[];
   setUserEvents: Dispatch<SetStateAction<EventSelectType[]>>;
+  currentDate: Dayjs;
+  moveBackInTime: (time: 'week' | 'day') => void;
+  moveForwardInTime: (time: 'week' | 'day') => void;
 }
 
 export interface CalendarConfigProviderProps extends PropsWithChildren {

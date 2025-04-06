@@ -1,5 +1,6 @@
 'use client';
 
+import dayjs from 'dayjs';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import { type EventSelectType } from '@/schemas/event';
@@ -22,6 +23,15 @@ export const CalendarConfigProvider = ({
   const [userEvents, setUserEvents] =
     useState<EventSelectType[]>(userEventsParam);
   const { data, isRefetching } = useGetUserEvents();
+  const [currentDate, setCurrentDate] = useState(dayjs());
+
+  const moveForwardInTime = (time: 'week' | 'day') => {
+    setCurrentDate((prev) => prev.add(1, time));
+  };
+
+  const moveBackInTime = (time: 'week' | 'day') => {
+    setCurrentDate((prev) => prev.subtract(1, time));
+  };
 
   useEffect(() => {
     if (data && !isRefetching) {
@@ -36,8 +46,11 @@ export const CalendarConfigProvider = ({
       setCurrentCountry,
       userEvents,
       setUserEvents,
+      currentDate,
+      moveBackInTime,
+      moveForwardInTime,
     }),
-    [currentCountry, userEvents]
+    [currentCountry, currentDate, userEvents]
   );
 
   return (
