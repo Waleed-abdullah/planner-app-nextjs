@@ -1,5 +1,5 @@
 import { MapPinIcon } from 'lucide-react';
-import { type FC } from 'react';
+import { type FC, useState } from 'react';
 
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { CATEGORIES } from '@/constants/categories';
@@ -13,8 +13,9 @@ interface EventItemProps {
 }
 
 export const EventItem: FC<EventItemProps> = ({ event }) => {
+  const [open, setOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
         <div
           style={{
@@ -38,7 +39,7 @@ export const EventItem: FC<EventItemProps> = ({ event }) => {
           </div>
         </div>
       </DialogTrigger>
-      <EventDetailsDialogContent event={event} />
+      <EventDetailsDialogContent event={event} setOpen={setOpen} />
     </Dialog>
   );
 };

@@ -28,4 +28,5 @@ export const API_ROUTES = {
   CREATE_EVENT: `${EVENTS_API_BASE}/create`,
   GET_ALL_EVENTS: `${EVENTS_API_BASE}/get-all`,
   PATCH_EVENT: `${EVENTS_API_BASE}/update`,
+  DELETE_EVENT: `${EVENTS_API_BASE}/delete`,
 };
