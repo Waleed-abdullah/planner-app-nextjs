@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -11,13 +9,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { useAddEventDialogStore } from '@/stores/add-event-dialog-store';
 
 import { AddEventForm } from './add-event-form';
 
 export const AddEventDialog = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { isOpen, setIsOpen } = useAddEventDialogStore();
   return (
-    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button className="max-w-[150px]">Add event</Button>
       </DialogTrigger>
@@ -29,7 +28,7 @@ export const AddEventDialog = () => {
             you&apos;re done.
           </DialogDescription>
         </DialogHeader>
-        <AddEventForm setIsDialogOpen={setIsDialogOpen} />
+        <AddEventForm />
       </DialogContent>
     </Dialog>
   );

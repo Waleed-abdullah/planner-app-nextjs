@@ -1,6 +1,7 @@
 import { relations } from 'drizzle-orm';
 import {
   boolean,
+  pgEnum,
   pgSchema,
   pgTable,
   text,
@@ -8,6 +9,27 @@ import {
   uuid,
   varchar,
 } from 'drizzle-orm/pg-core';
+
+export const Category = pgEnum('CategoryEnum', [
+  'BREAKFAST',
+  'LUNCH',
+  'DINNER',
+  'CAFES',
+  'BEER_GARDENS',
+  'BARS',
+  'NIGHTLIFE',
+  'LATE_NIGHT_FOOD',
+  'ACCOMMODATIONS',
+  'PARKS_NATURE',
+  'SIGHTSEEING',
+  'MARKETS',
+  'SHOPPING',
+  'ARTS_CULTURE',
+  'ACTIVITIES',
+  'DAY_TRIPS',
+  'TRANSPORTATION',
+  'KID_FRIENDLY',
+]);
 
 // Define the auth schema
 const authSchema = pgSchema('auth');
@@ -24,7 +46,7 @@ export const events = pgTable('events', {
   description: text('description'),
   country: text('country'),
   location: text('location'),
-  category: text('category'),
+  category: Category('category').notNull(),
   start_date: timestamp('start_date').notNull(),
   end_date: timestamp('end_date').notNull(),
   is_all_day: boolean('is_all_day').default(false),

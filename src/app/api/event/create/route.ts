@@ -4,7 +4,8 @@ import { createClient } from '@/libs/supabase/server';
 import { EventInsertSchema } from '@/schemas/event';
 
 export async function POST(request: Request) {
-  const { title, start_date, end_date, location } = await request.json();
+  const { title, start_date, end_date, location, category } =
+    await request.json();
 
   const parsedStartDate = new Date(start_date);
   const parsedEndDate = new Date(end_date);
@@ -24,6 +25,7 @@ export async function POST(request: Request) {
       end_date: parsedEndDate,
       location,
       user_id: user.id,
+      category: category,
     });
 
     await db.insert(events).values(eventData);
