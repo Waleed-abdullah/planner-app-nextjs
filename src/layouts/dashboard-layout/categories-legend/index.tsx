@@ -5,10 +5,19 @@ export const CategoriesLegend = () => {
     <div className="flex w-full items-center gap-2 overflow-x-auto px-8 pb-3">
       <div className="grid w-full min-w-[1400px] grid-cols-9 items-center gap-x-2 gap-y-2">
         {Object.values(CATEGORIES).map((category) => (
-          <div key={category} className="inline-flex w-fit items-center gap-2">
+          <div
+            key={category.label}
+            className="inline-flex w-fit items-center gap-2"
+          >
             <span className="whitespace-nowrap text-xs font-medium uppercase">
-              {category}
+              {category.label}
             </span>
+            <span
+              className="size-3 rounded-full"
+              style={{
+                backgroundColor: category.color,
+              }}
+            />
           </div>
         ))}
       </div>

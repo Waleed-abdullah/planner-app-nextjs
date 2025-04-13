@@ -3,9 +3,9 @@ import {
   createSelectSchema,
   createUpdateSchema,
 } from 'drizzle-zod';
-import { type z } from 'zod';
+import { z } from 'zod';
 
-import { events } from '@/libs/db/schemas';
+import { Category, events } from '@/libs/db/schemas';
 
 export const EventInsertSchema = createInsertSchema(events);
 
@@ -23,6 +23,18 @@ export const EventCreateSchema = EventInsertSchema.pick({
   start_date: true,
   end_date: true,
   location: true,
+  category: true,
 });
 
+export const EventCreateFormSchema = EventCreateSchema.omit({
+  end_date: true,
+}).extend({
+  category: z.enum(Category.enumValues),
+  duration: z
+    .number()
+    .min(1, 'Duration must be at least 1 hour')
+    .max(10, 'Duration must be at most 10 hours'),
+});
+
+export type EventCreateFormSchemaType = z.infer<typeof EventCreateFormSchema>;
 export type EventCreateSchemaType = z.infer<typeof EventCreateSchema>;

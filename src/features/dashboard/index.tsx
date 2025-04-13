@@ -1,5 +1,5 @@
 import { AddEventDialog } from './add-event-dialog';
-import { CustomCalendar } from './custom-calendar';
+import { Planner } from './planner';
 import { ShareDialog } from './share-dialog';
 
 export const Dashboard = () => {
@@ -9,7 +9,7 @@ export const Dashboard = () => {
         <AddEventDialog />
         <ShareDialog />
       </div>
-      <CustomCalendar />
+      <Planner />
     </div>
   );
 };

@@ -1,34 +1,43 @@
-export const CATEGORIES = {
-  //   FOOD
-  BREAKFAST: '🔍 Breakfast',
-  LUNCH: '🍽️ Lunch',
-  DINNER: '🍽️ Dinner',
-  CAFES: '☕ Cafes',
-  //   DRINKS
-  BEER_GARDENS: '🍻 Beer Gardens',
-  BARS: '🍸 Bars',
+import { type Category } from '@/libs/db/schemas';
 
-  //   NIGHTLIFE
-  NIGHTLIFE: '🌃 Nightlife',
-  LATE_NIGHT_FOOD: '🍔 Late Night Food',
+export const CATEGORIES: Record<
+  (typeof Category.enumValues)[number],
+  {
+    label: string;
+    color: string;
+  }
+> = {
+  // FOOD
+  BREAKFAST: { label: '🔍 Breakfast', color: '#FF9933' },
+  LUNCH: { label: '🍽️ Lunch', color: '#FFB266' },
+  DINNER: { label: '🍽️ Dinner', color: '#FF8000' },
+  CAFES: { label: '☕ Cafes', color: '#996633' },
 
-  //   STAY
-  ACCOMMODATIONS: '💤 Accommodations',
-  PARKS_NATURE: '🌿 Parks & Nature',
+  // DRINKS
+  BEER_GARDENS: { label: '🍻 Beer Gardens', color: '#FFD700' },
+  BARS: { label: '🍸 Bars', color: '#CC9900' },
 
-  //   TOURISM
-  SIGHTSEEING: '🗺️ Sightseeing',
-  MARKETS: '🌻 Markets',
+  // NIGHTLIFE
+  NIGHTLIFE: { label: '🌃 Nightlife', color: '#4B0082' },
+  LATE_NIGHT_FOOD: { label: '🍔 Late Night Food', color: '#800080' },
 
-  //   CULTURE: {
-  SHOPPING: '🛍️ Shopping',
-  ARTS_CULTURE: '🎭 Arts & Culture',
+  // STAY
+  ACCOMMODATIONS: { label: '💤 Accommodations', color: '#4169E1' },
+  PARKS_NATURE: { label: '🌿 Parks & Nature', color: '#228B22' },
 
-  //   ACTIVITIES
-  ACTIVITIES: '🏆 Activities',
-  DAY_TRIPS: '🥾 Day Trips',
+  // TOURISM
+  SIGHTSEEING: { label: '🗺️ Sightseeing', color: '#1E90FF' },
+  MARKETS: { label: '🌻 Markets', color: '#FFA500' },
 
-  //   TRANSPORT
-  TRANSPORTATION: '🚉 Transportation',
-  KID_FRIENDLY: '🎈 Kid Friendly',
+  // CULTURE
+  SHOPPING: { label: '🛍️ Shopping', color: '#FF69B4' },
+  ARTS_CULTURE: { label: '🎭 Arts & Culture', color: '#BA55D3' },
+
+  // ACTIVITIES
+  ACTIVITIES: { label: '🏆 Activities', color: '#32CD32' },
+  DAY_TRIPS: { label: '🥾 Day Trips', color: '#20B2AA' },
+
+  // TRANSPORT
+  TRANSPORTATION: { label: '🚉 Transportation', color: '#778899' },
+  KID_FRIENDLY: { label: '🎈 Kid Friendly', color: '#FF69B4' },
 };
