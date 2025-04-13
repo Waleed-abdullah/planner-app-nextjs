@@ -95,3 +95,35 @@ export const useUpdateEventMutation = () => {
     },
   });
 };
+
+export const useDeleteEventMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (eventId: string) => {
+      const response = await fetch(API_ROUTES.DELETE_EVENT, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ eventId }),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.error);
+      }
+
+      return responseData;
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+    onSuccess: () => {
+      toast.success('Event deleted successfully');
+      queryClient.invalidateQueries({
+        queryKey: [EVENT_QUERY_KEYS.GET_ALL_EVENTS],
+      });
+    },
+  });
+};
