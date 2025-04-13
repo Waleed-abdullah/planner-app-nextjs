@@ -36,6 +36,8 @@ body {
 
     /* navbar */
     --navbar-height: 3.5rem;
+    /* footer */
+    --footer-height: 3.25rem;
 
     /* text colors */
     --text-new-york-primary-1: #809ea5;
