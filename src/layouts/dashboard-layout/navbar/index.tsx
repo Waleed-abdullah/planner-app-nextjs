@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 
 import { LogoIcon } from '@/icons/logo';
 
+import { ShareDialog } from './share-dialog';
 import { UserMenu } from './user-menu';
 
 export const Navbar = () => {
@@ -13,6 +14,7 @@ export const Navbar = () => {
       </div>
       <div className="text-3xl">📅</div>
       <div className="flex items-center gap-3">
+        <ShareDialog />
         <span className="text-xs font-medium 2xl:text-sm">
           {dayjs().format('DD / MM / YYYY')}
         </span>
