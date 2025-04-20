@@ -57,6 +57,13 @@
       "when": 1744560619929,
       "tag": "0007_lowly_zarek",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1745148138655,
+      "tag": "0008_harsh_freak",
+      "breakpoints": true
     }
   ]
 }
